@@ -3,7 +3,9 @@
 This project helps job seekers identify missing skills in their resume compared to job descriptions.
 
 ## Features
-- Load and parse resume and job description text files
+- GUI interface for easy use
+- Support for PDF and text file resumes via file upload
+- Direct job description input via text box
 - Extract skills using a predefined skills list
 - Compare skills between resume and job description
 - Generate suggestions for missing skills
@@ -16,19 +18,20 @@ This project helps job seekers identify missing skills in their resume compared 
    ```
 3. Download NLTK data:
    ```
-   python -c "import nltk; nltk.download('punkt')"
+   python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
    ```
 
 ## Usage
-1. Place your resume in `resume.txt`
-2. Place the job description in `job_description.txt`
-3. Run the script:
+1. Run the script:
    ```
    python resume_skills_enhancer.py
    ```
+2. Click "Upload Resume" to select your resume file (PDF or text)
+3. Paste the job description in the text box
+4. Click "Analyze Skills" to see the results
+5. View the analysis results in the results section
 
 ## File Structure
-- `resume_skills_enhancer.py`: Main script
+- `resume_skills_enhancer.py`: Main script with GUI interface
 - `skills_list.txt`: Predefined list of skills
-- `resume.txt`: Sample resume text file
-- `job_description.txt`: Sample job description text file 
+- `requirements.txt`: Required Python packages 
