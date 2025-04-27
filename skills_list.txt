@@ -1,0 +1,30 @@
+Python
+Java
+JavaScript
+C++
+SQL
+HTML
+CSS
+React
+Angular
+Vue.js
+Node.js
+Django
+Flask
+Spring
+Git
+Docker
+AWS
+Azure
+Machine Learning
+Data Analysis
+Project Management
+Agile
+Scrum
+Communication
+Leadership
+Problem Solving
+Teamwork
+Time Management
+Critical Thinking
+Creativity 

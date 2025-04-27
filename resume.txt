@@ -1,0 +1,21 @@
+John Doe
+Software Engineer
+
+Skills:
+- Python
+- JavaScript
+- HTML
+- CSS
+- Git
+- Teamwork
+- Communication
+
+Experience:
+Software Developer at XYZ Corp (2020-2023)
+- Developed web applications using Python and JavaScript
+- Collaborated with team members using Git
+- Improved communication skills through client interactions
+
+Education:
+Bachelor's in Computer Science
+University of Technology (2016-2020) 

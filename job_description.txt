@@ -1,0 +1,19 @@
+Senior Software Engineer Position
+
+Requirements:
+- Strong Python programming skills
+- Experience with JavaScript and React
+- Knowledge of SQL and database management
+- Familiarity with AWS cloud services
+- Experience with Docker
+- Excellent problem-solving skills
+- Strong communication and leadership abilities
+- Experience with Agile methodologies
+- Machine Learning experience is a plus
+
+Responsibilities:
+- Develop and maintain web applications
+- Lead development team
+- Implement cloud-based solutions
+- Manage project timelines
+- Collaborate with cross-functional teams 
