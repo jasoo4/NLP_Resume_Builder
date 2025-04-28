@@ -6,7 +6,8 @@ This project helps job seekers identify missing skills in their resume compared 
 - GUI interface for easy use
 - Support for PDF and text file resumes via file upload
 - Direct job description input via text box
-- Extract skills using a predefined skills list
+- Advanced skill extraction using spaCy's Named Entity Recognition (NER)
+- Pattern matching for accurate skill identification
 - Compare skills between resume and job description
 - Generate suggestions for missing skills
 
@@ -20,6 +21,7 @@ This project helps job seekers identify missing skills in their resume compared 
    ```
    python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
    ```
+4. The first time you run the script, it will automatically download the spaCy English language model
 
 ## Usage
 1. Run the script:
