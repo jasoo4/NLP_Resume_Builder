@@ -6,13 +6,22 @@ import PyPDF2
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import io
+import subprocess
+import sys
 
-# Load spaCy model
+# Load spaCy model with better error handling
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    st.error("Please install the spaCy English language model by running: python -m spacy download en_core_web_sm")
-    st.stop()
+    st.warning("Downloading spaCy English language model... This may take a few minutes.")
+    try:
+        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
+        nlp = spacy.load("en_core_web_sm")
+        st.success("Successfully downloaded and loaded spaCy model!")
+    except Exception as e:
+        st.error(f"Failed to download spaCy model: {e}")
+        st.error("Please try running: python -m spacy download en_core_web_sm")
+        st.stop()
 
 # Initialize phrase matcher
 matcher = PhraseMatcher(nlp.vocab)
