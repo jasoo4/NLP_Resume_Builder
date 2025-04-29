@@ -6,13 +6,22 @@ import PyPDF2
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import io
+import subprocess
+import sys
 
-# Load spaCy model
+# Load spaCy model with better error handling
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    st.error("Please install the spaCy English language model by running: python -m spacy download en_core_web_sm")
-    st.stop()
+    st.warning("Downloading spaCy English language model... This may take a few minutes.")
+    try:
+        subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
+        nlp = spacy.load("en_core_web_sm")
+        st.success("Successfully downloaded and loaded spaCy model!")
+    except Exception as e:
+        st.error(f"Failed to download spaCy model: {e}")
+        st.error("Please try running: python -m spacy download en_core_web_sm")
+        st.stop()
 
 # Initialize phrase matcher
 matcher = PhraseMatcher(nlp.vocab)
@@ -147,6 +156,12 @@ def rank_missing_skills(job_description, missing_skills):
     ranked_skills = sorted(skill_scores.items(), key=lambda x: x[1], reverse=True)
     return ranked_skills
 
+def display_skills_with_bullets(skills, icon="•"):
+    """Display skills with bullet points."""
+    if not skills:
+        return "No skills found"
+    return "\n".join([f"{icon} {skill}" for skill in sorted(skills)])
+
 def main():
     st.title("Resume Skills Enhancer")
     st.write("Upload your resume and paste the job description to analyze missing skills.")
@@ -190,30 +205,21 @@ def main():
         # Display results
         st.subheader("Analysis Results")
         
-        col1, col2 = st.columns(2)
+        # Skills in Resume
+        st.success("✅ Skills in Your Resume")
+        st.markdown(display_skills_with_bullets(resume_skills))
         
-        with col1:
-            st.write("### Skills in Your Resume")
-            if resume_skills:
-                for skill in sorted(resume_skills):
-                    st.write(f"- {skill}")
-            else:
-                st.write("No skills found in resume.")
+        # Required Skills
+        st.info("📋 Required Skills in Job Description")
+        st.markdown(display_skills_with_bullets(job_skills))
         
-        with col2:
-            st.write("### Required Skills")
-            if job_skills:
-                for skill in sorted(job_skills):
-                    st.write(f"- {skill}")
-            else:
-                st.write("No skills found in job description.")
-        
-        st.write("### Suggested Skills to Add")
+        # Missing Skills
+        st.warning("⚠️ Suggested Skills to Add")
         if ranked_missing_skills:
             for skill, score in ranked_missing_skills:
-                st.write(f"- {skill} (importance score: {score:.2f})")
+                st.markdown(f"• {skill} (importance score: {score:.2f})")
         else:
-            st.write("No missing skills found!")
+            st.markdown("• No missing skills found!")
 
 if __name__ == "__main__":
     main() 
