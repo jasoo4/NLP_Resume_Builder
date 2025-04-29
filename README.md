@@ -1,39 +1,77 @@
 # Smart Resume Skills Enhancer
 
-This project helps job seekers identify missing skills in their resume compared to job descriptions.
+Smart Resume Skills Enhancer is a web-based tool that analyzes your resume against a job description and identifies which relevant skills are missing. It uses NLP (Natural Language Processing) to extract and compare skills, helping job seekers improve their resume alignment for specific roles.
+
+![image](https://github.com/user-attachments/assets/087d0e97-668c-4a14-949c-807b4cb6e455)
 
 ## Features
-- GUI interface for easy use
-- Support for PDF and text file resumes via file upload
-- Direct job description input via text box
-- Advanced skill extraction using spaCy's Named Entity Recognition (NER)
-- Pattern matching for accurate skill identification
-- Compare skills between resume and job description
-- Generate suggestions for missing skills
 
-## Setup
-1. Install Python 3.8 or higher
-2. Install dependencies:
+- Upload your resume as a PDF
+- Paste any job description into the app
+- Extract and compare relevant skills using spaCy's NLP pipeline
+- View skills found in your resume, skills mentioned in the job description, and those you're missing
+- Clean, simple UI with no setup required for end users
+
+## Why This Matters
+
+Many resumes fail to match job descriptions closely enough to pass applicant tracking systems (ATS) or impress hiring managers. This tool helps users:
+
+- Quickly identify missing skills for a specific job
+- Improve keyword alignment
+- Save time reviewing job descriptions manually
+
+## Technologies Used
+
+- **Python** — core scripting
+- **spaCy** — NLP for skill extraction using `PhraseMatcher`
+- **Streamlit** — frontend and web deployment
+- **PyMuPDF** — text extraction from PDF resumes
+
+## File Overview
+
+```
+resume_skill_enhancer/
+│
+├── streamlit_app.py         # Main Streamlit application
+├── skills_list.txt          # Master list of recognized skills
+├── requirements.txt         # Project dependencies
+├── README.md                # This file
+```
+
+## Getting Started
+
+To run the app locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jasoo4/NLP_Resume_Builder.git
+   cd NLP_Resume_Builder
    ```
+
+2. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
-3. Download NLTK data:
-   ```
-   python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
-   ```
-4. The first time you run the script, it will automatically download the spaCy English language model
 
-## Usage
-1. Run the script:
+3. Launch the Streamlit app:
+   ```bash
+   streamlit run streamlit_app.py
    ```
-   python resume_skills_enhancer.py
-   ```
-2. Click "Upload Resume" to select your resume file (PDF or text)
-3. Paste the job description in the text box
-4. Click "Analyze Skills" to see the results
-5. View the analysis results in the results section
 
-## File Structure
-- `resume_skills_enhancer.py`: Main script with GUI interface
-- `skills_list.txt`: Predefined list of skills
-- `requirements.txt`: Required Python packages 
+You can now upload your resume and paste a job description to view the results.
+
+## Roadmap
+
+- Add ranked skill importance based on job description frequency
+- Suggest example resume lines for missing skills
+- Support `.docx` resumes
+- Enable report downloading (PDF or plain text)
+- Explore integration with external datasets like O*NET
+
+## Author
+
+Jason Antonellis  
+
+## License
+
+This project is open source under the MIT License.
